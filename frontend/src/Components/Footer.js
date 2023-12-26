@@ -22,39 +22,7 @@ const Footer = () => {
                 Subscribe{" "}
               </button>{" "}
             </div>
-            <div class="text-center text-lg md:space-x-1">
-              {" "}
-              <a
-                class="w-9 h-10 pt-1 m-2 md:ml-2 md:mr-0 inline-block border-1 rounded-lg text-white bg-blue-500 hover:bg-white hover:text-blue-500"
-                href="#"
-              >
-                <li class="fa fa-twitter"></li>
-              </a>{" "}
-              <a
-                class="w-9 h-10 pt-1 m-2 inline-block border-1 rounded-lg text-white bg-orange-500 hover:bg-white hover:text-orange-500"
-                href="#"
-              >
-                <li class="fa fa-google"></li>
-              </a>{" "}
-              <a
-                class="w-9 h-10 pt-1 m-2 inline-block border-1 rounded-lg text-white bg-red-500 hover:bg-white hover:text-red-500"
-                href="#"
-              >
-                <li class="fa fa-linkedin"></li>
-              </a>{" "}
-              <a
-                class="w-9 h-10 pt-[5px] m-2 inline-block border-1 rounded-lg text-white bg-purple-500 hover:bg-white hover:text-purple-500"
-                href="#"
-              >
-                <li class="fa fa-telegram"></li>
-              </a>{" "}
-              <a
-                class="w-9 h-10 pt-[5px] m-2 inline-block border-1 rounded-lg text-white bg-cyan-500 hover:bg-white hover:text-cyan-500"
-                href="#"
-              >
-                <li class="fa fa-facebook"></li>
-              </a>{" "}
-            </div>
+            
           </div>
           <hr class="mt-2 md:overflow-hidden" />
           <div class="grid grid-cols-2 my-3 text-center md:grid-cols-4">

@@ -6,7 +6,6 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  console.log(email, password);
   const handleSubmit = async () => {
     if (email && password) {
       try {
@@ -24,12 +23,12 @@ const Login = () => {
           }
         );
 
-        console.log("response:", response);
+        console.log("response:", response?.data);
         if (response) {
           localStorage.setItem("Token", response?.data?.token);
-          const userData = JSON.stringify(response?.data?.isemail);
+          const userData = JSON.stringify(response?.data?.userData);
           localStorage.setItem("User", userData);
-          navigate("/");
+          navigate("/home");
         }
       } catch (error) {
         console.error("Error during registration:", error);
@@ -37,7 +36,7 @@ const Login = () => {
     }
   };
   return (
-    <div class="flex justify-center my-6">
+    <div class="flex justify-center my-6 h-[96vh] items-center">
       <div class="flex flex-col justify-center items-center md:flex-row shadow rounded-xl max-w-7xl w-[90%]  m-2">
         <div class=" w-full md:w-3/4">
           <div class="text-xl cursor-pointer flex flex-col justify-center items-center mt-5 md:mt-0 py-4">
@@ -89,7 +88,7 @@ const Login = () => {
             </button>
           </div>
         </div>
-        <div class="h-[100%] w-full md:w-1/3  bg-gradient-to-l from-blue-400 to-emerald-400  items-center flex justify-center">
+        <div class="h-[90vh] w-full md:w-1/3  bg-gradient-to-l from-blue-400 to-emerald-400  items-center flex justify-center">
           <div class="text-white text-base font-semibold text-center my-10 space-y-2 m-2">
             <h1 class="text-5xl">New Here?</h1>
             <h1 class="">Sign Up and discover new oppurtinities here</h1>

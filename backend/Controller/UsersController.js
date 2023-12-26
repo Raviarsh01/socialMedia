@@ -31,9 +31,12 @@ const userLogin = async (req, res) => {
       return res.status(400).json({ message: "Enter valid credential" });
     }
     const token = jwt.sign(user, process.env.SECRET_KEY);
+    const userData = await Users.findOne({ email: user.email }).select(
+      "_id email firstName lastName phoneNumber"
+    );
     const data = {
       message: "Login success",
-      isemail,
+      userData,
       token,
     };
 
@@ -44,4 +47,14 @@ const userLogin = async (req, res) => {
   }
 };
 
-module.exports = { userRegister, userLogin };
+const userProfile = async (req, res) => {
+  try {
+    const UserData = await Users.find();
+    return res.status(200).json(UserData);
+  } catch (error) {
+    console.log("error....", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+module.exports = { userRegister, userLogin, userProfile };

@@ -31,7 +31,7 @@ const SignUp = () => {
 
         console.log("response:", response);
         if (response?.data?.message) {
-          navigate("/login");
+          navigate("/");
         }
       } catch (error) {
         console.error("Error during registration:", error);
@@ -126,7 +126,7 @@ const SignUp = () => {
             <div className="mt-4">
               {" "}
               <Link
-                to="/login"
+                to="/"
                 class="bg-white rounded-2xl px-4 text-emerald-400 py-1"
               >
                 Log In
