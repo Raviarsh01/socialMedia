@@ -4,7 +4,7 @@ import Routing from "./Routing";
 import Layout from "./Components/Layout";
 import Profile from "./Pages/Profile";
 import Home from "./Pages/Home";
-import Notes from "./Pages/Notes";
+import Posts from "./Pages/Posts";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 
@@ -22,10 +22,10 @@ function App() {
             }
           />
           <Route
-            path="/notes"
+            path="/posts"
             element={
               <Routing>
-                <Notes />
+                <Posts />
               </Routing>
             }
           />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <div class="shadow py-3 flex justify-between px-5 items-center">
+      <div class="shadow py-3 flex justify-between px-5 items-center navbarFixed">
         <div className="flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ const Navbar = () => {
           <Link to="/home" className="font-medium">
             Home
           </Link>
-          <Link to="/notes" className="mx-8 font-medium">
+          <Link to="/posts" className="mx-8 font-medium">
             Posts
           </Link>
           <Link to="/profile" className="font-medium">

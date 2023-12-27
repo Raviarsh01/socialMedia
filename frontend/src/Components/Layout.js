@@ -9,7 +9,7 @@ const Layout = () => {
       <div>
         <Navbar />
       </div>
-      <div style={{ minHeight: "84vh" }}>
+      <div className="outletDiv">
         <Outlet />
       </div>
       <Footer />
