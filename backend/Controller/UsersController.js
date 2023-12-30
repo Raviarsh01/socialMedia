@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 
 const userRegister = async (req, res) => {
   const user = req.body;
-
   try {
     const isemail = await Users.find({ email: user.email });
 
@@ -24,23 +23,30 @@ const userLogin = async (req, res) => {
   const user = req.body;
   try {
     const isemail = await Users.findOne({ email: user.email });
-    if (Object.keys(isemail).length === 0) {
-      return res.status(400).json({ message: "Enter valid credential" });
+    if (!isemail) {
+      return res.status(400).json({ message: "Enter valid credential 1" });
     }
-    if (isemail.password !== user.password) {
-      return res.status(400).json({ message: "Enter valid credential" });
+    if (isemail.password != user.password) {
+      return res.status(400).json({ message: "Enter valid credential 2" });
     }
-    const token = jwt.sign(user, process.env.SECRET_KEY);
-    const userData = await Users.findOne({ email: user.email }).select(
-      "_id email firstName lastName phoneNumber"
-    );
-    const data = {
+
+    const tokenData = {
+      userId: isemail._id,
+      email: isemail.email,
+    };
+    const token = jwt.sign(tokenData, process.env.SECRET_KEY);
+
+    const apiData = {
       message: "Login success",
-      userData,
+      UserData: {
+        UserId: isemail._id,
+        Email: isemail.email,
+        FirstName: isemail.firstName,
+        LastName: isemail.lastName,
+      },
       token,
     };
-
-    return res.status(200).json(data);
+    return res.status(200).json(apiData);
   } catch (error) {
     console.log("error....", error);
     return res.status(500).json({ message: "Internal Server Error" });
@@ -49,8 +55,19 @@ const userLogin = async (req, res) => {
 
 const userProfile = async (req, res) => {
   try {
-    const UserData = await Users.find();
-    return res.status(200).json(UserData);
+    const UserData = await Users.findById(req.user.userId).select("-password");
+
+    const spilitdob = UserData.dob.split(" ");
+    const dob = parseInt(spilitdob[2]);
+    let currentDate = new Date();
+    let currentYear = currentDate.getFullYear();
+
+    const updatedUserData = {
+      ...UserData.toObject(),
+      fullName: `${UserData.firstName} ${UserData.lastName}`,
+      age: currentYear - dob,
+    };
+    return res.status(200).json(updatedUserData);
   } catch (error) {
     console.log("error....", error);
     return res.status(500).json({ message: "Internal Server Error" });

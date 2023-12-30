@@ -9,6 +9,6 @@ const verifyToken = require("../Middleware");
 
 router.post("/register", userRegister);
 router.post("/login", userLogin);
-router.get("/user-profile", userProfile);
+router.get("/user-profile", verifyToken, userProfile);
 
 module.exports = router;

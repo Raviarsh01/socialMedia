@@ -7,16 +7,20 @@ const SignUp = () => {
   const [fname, setfname] = useState("");
   const [lname, setlname] = useState("");
   const [email, setemail] = useState("");
+  const [dob, setdob] = useState("");
   const [phone, setphone] = useState("");
   const [password, setpassword] = useState("");
+  const [gender, setGender] = useState("");
   const handleSubmit = async () => {
-    if (fname && lname && email && phone && password) {
+    if (fname && lname && email && phone && password && gender && dob) {
       try {
         const data = new FormData();
         data.append("firstName", fname);
         data.append("lastName", lname);
         data.append("email", email);
+        data.append("dob", dob);
         data.append("phoneNumber", phone);
+        data.append("gender", gender);
         data.append("password", password);
 
         const response = await axios.post(
@@ -64,7 +68,7 @@ const SignUp = () => {
             <h1 class="text-sm font-medium text-gray-600 m-2">OR</h1>
           </div>
           <div class="flex flex-col justify-center items-center m-2 space-y-6 md:space-y-8">
-            <div class="">
+            <div class="flex gap-10">
               <input
                 type="text"
                 placeholder="First Name"
@@ -72,8 +76,6 @@ const SignUp = () => {
                 onChange={(e) => setfname(e.target.value)}
                 class=" bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]"
               />
-            </div>
-            <div class="">
               <input
                 type="text"
                 placeholder="Last Name"
@@ -82,7 +84,30 @@ const SignUp = () => {
                 onChange={(e) => setlname(e.target.value)}
               />
             </div>
-            <div class="">
+            <div class="flex gap-10">
+              <input
+                type="text"
+                placeholder="Date of Birth"
+                class=" bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]"
+                value={dob}
+                onChange={(e) => setdob(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Gender"
+                class=" bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              />
+            </div>
+            <div class="flex gap-10">
+              <input
+                type="text"
+                placeholder="Phone Number"
+                class=" bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]"
+                value={phone}
+                onChange={(e) => setphone(e.target.value)}
+              />
               <input
                 type="text"
                 placeholder="Email"
@@ -91,22 +116,20 @@ const SignUp = () => {
                 onChange={(e) => setemail(e.target.value)}
               />
             </div>
-            <div class="">
-              <input
-                type="text"
-                placeholder="Phone Number"
-                class=" bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]"
-                value={phone}
-                onChange={(e) => setphone(e.target.value)}
-              />
-            </div>
-            <div class="">
+            <div class="flex gap-10">
               <input
                 type="password"
                 placeholder="Password"
                 class=" bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]"
                 value={password}
                 onChange={(e) => setpassword(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                class=" bg-gray-100 rounded-lg px-5 py-2 focus:border border-blue-600 focus:outline-none text-black placeholder:text-gray-600 placeholder:opacity-50 font-semibold md:w-72 lg:w-[340px]"
+                // value={}
+                // onChange={(e) => (e.target.value)}
               />
             </div>
           </div>

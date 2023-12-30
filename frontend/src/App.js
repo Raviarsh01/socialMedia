@@ -12,6 +12,8 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route element={<Layout />}>
           <Route
             path="/home"
@@ -38,8 +40,6 @@ function App() {
             }
           />
         </Route>
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
   );

@@ -26,7 +26,7 @@ const Login = () => {
         console.log("response:", response?.data);
         if (response) {
           localStorage.setItem("Token", response?.data?.token);
-          const userData = JSON.stringify(response?.data?.userData);
+          const userData = JSON.stringify(response?.data?.UserData);
           localStorage.setItem("User", userData);
           navigate("/home");
         }

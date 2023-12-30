@@ -1,8 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization;
-
+  const token = req.header("Authorization")?.split(" ")[1];
   if (!token) {
     return res.status(403).json({ message: "Token not provided" });
   }
@@ -11,9 +10,9 @@ const verifyToken = (req, res, next) => {
     if (err) {
       return res.status(401).json({ message: "Invalid token" });
     }
-    req.user = decoded; // Attach user information to the request object
+    req.user = decoded;
     next();
   });
 };
 
-module.exports = { verifyToken };
+module.exports = verifyToken;
