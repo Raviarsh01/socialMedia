@@ -22,7 +22,6 @@ const Footer = () => {
                 Subscribe{" "}
               </button>{" "}
             </div>
-            
           </div>
           <hr class="mt-2 md:overflow-hidden" />
           <div class="grid grid-cols-2 my-3 text-center md:grid-cols-4">
@@ -30,31 +29,31 @@ const Footer = () => {
               <h1 class="text-blue-500 text-lg font-semibold">Product</h1>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Features
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Integrations
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Shopify Integrations
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Pricing
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Chrome Extensions
                 </a>{" "}
               </p>
@@ -63,31 +62,31 @@ const Footer = () => {
               <h1 class="text-blue-500 text-lg font-semibold">Company</h1>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Terms
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Customers
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Blog
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Terms of Servics
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Privacy Policy
                 </a>{" "}
               </p>
@@ -96,31 +95,31 @@ const Footer = () => {
               <h1 class="text-blue-500 text-lg font-semibold">Support</h1>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Community
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Support Customers
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Documentations
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Service Providers
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Email Contact
                 </a>{" "}
               </p>
@@ -129,13 +128,13 @@ const Footer = () => {
               <h1 class="text-blue-500 text-lg font-semibold">Contact Us</h1>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   Support@admin.com
                 </a>{" "}
               </p>
               <p>
                 {" "}
-                <a class="text-gray-500/80 hover:text-cyan-600" href="#">
+                <a class="text-gray-500/80 hover:text-cyan-600" href="text">
                   (+91)700-788-67-00
                 </a>{" "}
               </p>

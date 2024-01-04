@@ -47,13 +47,13 @@ const Login = () => {
               Login using Social accounts
             </h1>
             <div class="text-lg lg:text-xl text-center space-x-5 m-2">
-              <a href="#">
+              <a href="text">
                 <i class="fa-brands fa-facebook-f text-white  bg-blue-500 rounded-full px-[14px] py-[10px] "></i>
               </a>
-              <a href="#">
+              <a href="text">
                 <i class="fa-brands fa-twitter text-white bg-cyan-400  rounded-full px-[10px] py-[10px] "></i>
               </a>
-              <a href="#">
+              <a href="text">
                 <i class="fa-brands fa-google-plus-g text-white bg-red-500 rounded-full px-[10px] py-[10px] "></i>
               </a>
             </div>

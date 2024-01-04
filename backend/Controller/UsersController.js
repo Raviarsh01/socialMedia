@@ -29,7 +29,6 @@ const userLogin = async (req, res) => {
     if (isemail.password != user.password) {
       return res.status(400).json({ message: "Enter valid credential 2" });
     }
-
     const tokenData = {
       userId: isemail._id,
       email: isemail.email,

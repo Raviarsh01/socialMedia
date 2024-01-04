@@ -96,7 +96,7 @@ const Profile = () => {
                     src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
                     alt=""
                   />
-                  <a href="#" class="text-gray-800">
+                  <a href="text" class="text-gray-800">
                     James
                   </a>
                 </div>
@@ -106,7 +106,7 @@ const Profile = () => {
                     src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4"
                     alt=""
                   />
-                  <a href="#" class="text-gray-800">
+                  <a href="text" class="text-gray-800">
                     Amit
                   </a>
                 </div>
@@ -155,7 +155,7 @@ const Profile = () => {
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Email.</div>
                   <div class="px-4 py-2">
-                    <a class="text-blue-800" href="mailto:jane@example.com">
+                    <a class="text-blue-800" href="textailto:jane@example.com">
                       {userData?.email}
                     </a>
                   </div>
@@ -193,7 +193,7 @@ const Profile = () => {
                     src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
                     alt=""
                   />
-                  <a href="#" class="text-gray-800">
+                  <a href="text" class="text-gray-800">
                     James
                   </a>
                 </div>
@@ -203,7 +203,7 @@ const Profile = () => {
                     src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4"
                     alt=""
                   />
-                  <a href="#" class="text-gray-800">
+                  <a href="text" class="text-gray-800">
                     Amit
                   </a>
                 </div>
@@ -213,7 +213,7 @@ const Profile = () => {
                     src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
                     alt=""
                   />
-                  <a href="#" class="text-gray-800">
+                  <a href="text" class="text-gray-800">
                     James
                   </a>
                 </div>
@@ -223,7 +223,7 @@ const Profile = () => {
                     src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4"
                     alt=""
                   />
-                  <a href="#" class="text-gray-800">
+                  <a href="text" class="text-gray-800">
                     Amit
                   </a>
                 </div>
