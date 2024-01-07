@@ -3,7 +3,6 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <hr />
       <div class="flex justify-center items-center">
         <div class="bg-white items-center w-full md:max-w-7xl">
           <div class="flex flex-col justify-center items-center mt-3 space-y-2 md:mx-[50px] md:flex-row md:justify-between">

@@ -81,16 +81,10 @@ const PostLike = async (req, res) => {
 };
 
 const PostComment = async (req, res) => {
-  const { postId } = req.params;
   const { userId } = req.user;
-  const { text } = req.body;
+  const { postid, text } = req.body;
   try {
-    const post = await Posts.findById(postId);
-    // if (post.comments.includes(userId)) {
-    //   post.comments.pull(userId);
-    //   await post.save();
-    //   return res.status(200).json({ message: "Comment remove" });
-    // }
+    const post = await Posts.findById(postid);
     post.comments.push({
       user: userId,
       text,
@@ -104,4 +98,26 @@ const PostComment = async (req, res) => {
   }
 };
 
-module.exports = { PostCreate, AllPosts, UserPosts, PostLike, PostComment };
+const DeleteComment = async (req, res) => {
+  const { commentId } = req.params;
+  const { userId } = req.user;
+  const { postid, text } = req.body;
+  try {
+    const post = await Posts.findById(postid);
+    post.comments.pull(commentId);
+    await post.save();
+    return res.status(200).json({ message: "Comment remove" });
+  } catch (error) {
+    console.error("Comment on post error:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+module.exports = {
+  PostCreate,
+  AllPosts,
+  UserPosts,
+  PostLike,
+  PostComment,
+  DeleteComment,
+};

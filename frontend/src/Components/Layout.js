@@ -1,18 +1,21 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const Layout = () => {
+  const { pathname } = useLocation();
   return (
     <>
-      <div>
-        <Navbar />
+      <div className="flex">
+        <div className="w-[25%]">
+          <Sidebar />
+        </div>
+        <div className="w-[80%] bg-gray-100 p-2">
+          <Outlet />
+        </div>
       </div>
-      <div className="outletDiv">
-        <Outlet />
-      </div>
-      <Footer />
+      {pathname != "/home" && <Footer />}
     </>
   );
 };

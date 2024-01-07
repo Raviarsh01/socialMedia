@@ -9,31 +9,30 @@ const Home = () => {
   const [commentSectionRefresh, setcommentSectionRefresh] = useState(false);
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [loading, setloading] = useState(true);
-  console.log(commentSectionRefresh, postid);
+  console.log(comments);
   const getData = async () => {
     const response = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}post/all`
     );
     setdata(response.data);
     setloading(false);
+    setcommentSectionRefresh(true);
   };
   useEffect(() => {
     if (loading) {
       getData();
     }
   }, [loading]);
-
   useEffect(() => {
-    console.log("useefefect");
-    if (postid && commentSectionRefresh) {
-      console.log("useefefect if");
+    if (showCommentBox && commentSectionRefresh) {
       const filterData = data?.filter((item) => item._id == postid);
       if (filterData.length != 0) {
-        setcomments(filterData[0].comments);
+        setcomments(filterData[0].comments.reverse());
+        setcommentSectionRefresh(false);
       }
-      setcommentSectionRefresh(false);
     }
-  }, [commentSectionRefresh]);
+  }, [commentSectionRefresh, showCommentBox]);
+
   const handleLike = async (postId) => {
     const token = localStorage.getItem("Token");
     await axios.post(
@@ -48,7 +47,7 @@ const Home = () => {
     );
     setloading(true);
   };
-  const handleComments = (postId) => {
+  const handleShowCommentBox = (postId) => {
     setShowCommentBox(true);
     setPostid(postId);
     setcommentSectionRefresh(true);
@@ -57,8 +56,8 @@ const Home = () => {
   const handlePostComment = async () => {
     const token = localStorage.getItem("Token");
     await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}post/comment/${postid}/`,
-      { text: commentText },
+      `${process.env.REACT_APP_BACKEND_URL}post/comment/`,
+      { text: commentText, postid },
       {
         headers: {
           "Content-Type": "application/json",
@@ -67,26 +66,38 @@ const Home = () => {
       }
     );
     setcommentText("");
-    setcommentSectionRefresh(true);
+    setloading(true);
+  };
+
+  const handleDeleteComment = async (id) => {
+    const token = localStorage.getItem("Token");
+    await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}post/comment-delete/${id}`,
+      { postid },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     setloading(true);
   };
   return (
     <div className="bg-gray-100 flex">
-      <div className="w-[25%] h-screen bg-white m-5 shadow rounded-lg">
-        div 1111
-      </div>
-      <div className="my-5 w-[50%]">
-        <img
-          src="https://tse1.mm.bing.net/th?id=OIP.l6nPLCiWuJkhte2Ru60fdQAAAA&pid=Api&P=0&h=180"
-          alt="img"
-          className="img44"
-        />
-        <p className="text-sm">Your Story</p>
-
+      <div className="mt-2 w-[65%]">
+        <div className="w-fit">
+          <img
+            src="https://tse1.mm.bing.net/th?id=OIP.l6nPLCiWuJkhte2Ru60fdQAAAA&pid=Api&P=0&h=180"
+            alt="img"
+            className="img44"
+          />
+          <p className="text-xs">Your Story</p>
+        </div>
         <div class="flex flex-col">
           {data?.map((item, i) => (
-            <div class="bg-white mt-2" key={i}>
-              <div className="mx-5 my-3">
+            <div class="bg-white mt-2 px-12 py-1 shadow" key={i}>
+              <div className="mb-3">
                 <div className="flex">
                   <i class="fa-solid fa-user text-2xl text-gray-600"></i>
                   <p className="ms-2 text-xl text-gray-700 font-semibold">
@@ -98,7 +109,7 @@ const Home = () => {
                 </p>
               </div>
               <img
-                class="border shadow-lg h-[440px] w-full"
+                class="border shadow-lg h-[360px] w-full"
                 src={item.imageLink}
                 alt="img"
               />
@@ -107,20 +118,21 @@ const Home = () => {
                   class="w-1/3 hover:bg-gray-200 text-center text-base text-gray-700 font-semibold"
                   onClick={() => handleLike(item._id)}
                 >
-                  {item.likes.length} Like
+                  {item.likes.length} <i class="fa-regular fa-heart"></i>
                 </div>
                 <div
-                  onClick={() => handleComments(item._id)}
+                  onClick={() => handleShowCommentBox(item._id)}
                   class="w-1/3 hover:bg-gray-200 border-l-4 text-center text-base text-gray-700 font-semibold"
                 >
-                  {item.comments.length} Comment
+                  {item.comments.length} <i class="fa-regular fa-comment"></i>
                 </div>
                 <div class="w-1/3 hover:bg-gray-200 border-l-4 border-r- text-center text-base text-gray-700 font-semibold">
-                  Share
+                  <i class="fa-regular fa-share"></i>
                 </div>
               </div>
-              <div className="shadow p-4  text-base text-gray-700 font-medium">
-                Posted: {item.datePosted.split("T")[0]}
+              <div className=" mt-1 text-base text-gray-700 font-medium">
+                <i class="fa-regular fa-calendar-days"></i>{" "}
+                {item.datePosted.split("T")[0]}
               </div>
 
               {/* <div class="bg-white border-4 bg-gray-300 border-white rounded-b-lg shadow p-5 text-xl text-gray-700 content-center font-semibold flex flex-row flex-wrap">
@@ -137,17 +149,17 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div className="w-[25%] h-screen bg-white m-5 shadow rounded-lg">
+      <div className="w-[35%] h-screen overflow-auto  bg-white shadow">
         {showCommentBox && (
           <div className="mb-5 mx-2">
-            <div
-              className="mt-3 mb-2 flex justify-end me-1"
-              onClick={() => {
-                setcomments([]);
-                setShowCommentBox(false);
-              }}
-            >
-              <i class="fa-light fa-xmark-large"></i>
+            <div className="mt-3 mb-2 flex justify-end me-1">
+              <i
+                class="fa-light fa-xmark-large"
+                onClick={() => {
+                  setcomments([]);
+                  setShowCommentBox(false);
+                }}
+              ></i>
             </div>
             <textarea
               type="text"
@@ -167,12 +179,21 @@ const Home = () => {
               {comments.length == 0 && <p>No comments yet</p>}
               {comments.length != 0 &&
                 comments?.map((items, i) => (
-                  <div key={i} className="mb-3">
+                  <div key={i} className="mb-2 px-2">
                     <p className="font-medium">
                       {items?.user?.firstName} {items?.user?.lastName}
                     </p>
-                    <p>{items.text}</p>
-                    <hr />
+                    <p className="mb-1">{items.text}</p>
+                    <div className="flex justify-between text-xs">
+                      <p>{items?.dateCommented.split("T")[0]}</p>
+                      <p
+                        className="cursor-pointer"
+                        onClick={() => handleDeleteComment(items?._id)}
+                      >
+                        Delete
+                      </p>
+                    </div>
+                    <hr className="mt-2" />
                   </div>
                 ))}
             </div>

@@ -4,7 +4,7 @@ import Routing from "./Routing";
 import Layout from "./Components/Layout";
 import Profile from "./Pages/Profile";
 import Home from "./Pages/Home";
-import Posts from "./Pages/Posts";
+import Messages from "./Pages/Messages";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 
@@ -24,10 +24,10 @@ function App() {
             }
           />
           <Route
-            path="/posts"
+            path="/messages"
             element={
               <Routing>
-                <Posts />
+                <Messages />
               </Routing>
             }
           />

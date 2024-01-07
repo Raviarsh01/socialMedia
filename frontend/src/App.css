@@ -16,18 +16,29 @@
     transform: rotate(360deg);
   }
 }
-.navbarFixed {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: white;
-}
-.outletDiv {
-  min-height: 84vh;
-  margin-top: 66px;
-}
+
 .img44 {
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
+}
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.profileDiv55 {
+  display: none;
+}
+.img33:hover ~ .profileDiv55 {
+  display: flex;
+  width: 100%;
+  color: white;
+}
+.icon-color{
+  color:white;
 }
