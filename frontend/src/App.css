@@ -39,6 +39,12 @@
   width: 100%;
   color: white;
 }
-.icon-color{
-  color:white;
+.icon-color {
+  color: white;
+}
+.icon22-sidebar {
+  font-size: 19px;
+}
+.hideElement {
+  display: none;
 }

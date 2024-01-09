@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { dateFormat } from "../Utilis";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState([]);
   const [data, setdata] = useState();
 
   const getUserData = async () => {
@@ -69,8 +70,8 @@ const Profile = () => {
                   <span>Member since</span>
                   <span class="ml-auto">
                     <span className="bg-green-500 py-1 px-2 rounded text-white text-sm">
-                      {" "}
-                      {userData?.dateCreated.split("T")[0]}
+                      {userData?.dateCreated &&
+                        dateFormat(userData?.dateCreated)}
                     </span>
                   </span>
                 </li>
@@ -118,7 +119,7 @@ const Profile = () => {
                   <div class="px-4 py-2">{userData?.phoneNumber}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Email.</div>
+                  <div class="px-4 py-2 font-semibold">Email</div>
                   <div class="px-4 py-2">
                     <a class="text-blue-800" href="textailto:jane@example.com">
                       {userData?.email}
@@ -146,9 +147,9 @@ const Profile = () => {
                   </button>
                 </div>
                 <hr />
-                <div className="mt-4 w-full flex flex-wrap gap-4">
+                <div className="mt-4 w-full grid grid-cols-4 gap-3">
                   {data?.map((item, i) => (
-                    <div class="shadow border rounded w-[25%] relative">
+                    <div class="shadow border rounded relative">
                       <img
                         className="w-full h-[210px] img33"
                         src={item.imageLink}

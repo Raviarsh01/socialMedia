@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { dateFormat } from "../Utilis";
 
 const Home = () => {
   const [data, setdata] = useState();
@@ -9,7 +10,7 @@ const Home = () => {
   const [commentSectionRefresh, setcommentSectionRefresh] = useState(false);
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [loading, setloading] = useState(true);
-  console.log(comments);
+
   const getData = async () => {
     const response = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}post/all`
@@ -132,7 +133,7 @@ const Home = () => {
               </div>
               <div className=" mt-1 text-base text-gray-700 font-medium">
                 <i class="fa-regular fa-calendar-days"></i>{" "}
-                {item.datePosted.split("T")[0]}
+                {dateFormat(item.datePosted)}
               </div>
 
               {/* <div class="bg-white border-4 bg-gray-300 border-white rounded-b-lg shadow p-5 text-xl text-gray-700 content-center font-semibold flex flex-row flex-wrap">
@@ -185,7 +186,7 @@ const Home = () => {
                     </p>
                     <p className="mb-1">{items.text}</p>
                     <div className="flex justify-between text-xs">
-                      <p>{items?.dateCommented.split("T")[0]}</p>
+                      <p>{dateFormat(items?.dateCommented)}</p>
                       <p
                         className="cursor-pointer"
                         onClick={() => handleDeleteComment(items?._id)}
